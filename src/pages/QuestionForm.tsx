@@ -67,42 +67,37 @@ export default function QuestionForm({ cvData, onBack }: QuestionFormProps) {
           color: 0xF59E0B, // Amber/Gold color
           fields: [
             {
-              name: '👤 Server Name',
+              name: '👤 სერვერზე სახელი',
               value: cvData.serverName || 'N/A',
               inline: true,
             },
             {
-              name: '💬 Discord Name',
+              name: '💬 დისქორდის სახელი',
               value: cvData.discordName || 'N/A',
               inline: true,
             },
             {
-              name: '🎂 Age',
+              name: '🎂 წლოვანება',
               value: cvData.age || 'N/A',
               inline: true,
             },
             {
-              name: '🌍 Timezone',
-              value: cvData.timezone || 'N/A',
-              inline: true,
-            },
-            {
-              name: '📝 Roleplay Experience',
+              name: '📝 Roleplay გამოცდილება',
               value: cvData.experience || 'N/A',
               inline: false,
             },
             {
-              name: '❓ Q1: Biography & Values',
+              name: '❓ კითხვა პირველი: წაიკითხეთ თუ არა ბიოგრაფიის განყოფილება და გაიგეთ ლუჩეს კრიმინალური ოჯახის ღირებულებები?',
               value: answers.question1 || 'No Answer',
               inline: false,
             },
             {
-              name: '❓ Q2: Why Join?',
+              name: '❓ კითხვა მეორე: რატომ გსურთ შეუერთდეთ Lucchese Crime Family-ს?',
               value: answers.question2 || 'No Answer',
               inline: false,
             },
             {
-              name: '❓ Q3: Contribution & Loyalty',
+              name: '❓ კითხვა მესამე: რა შეგიძლიათ წვლილი შეიტანოთ ოჯახში და როგორ აპირებთ თქვენი ერთგულების დამტკიცებას?',
               value: answers.question3 || 'No Answer',
               inline: false,
             },
