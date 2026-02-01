@@ -20,8 +20,7 @@ export default function LandingPage() {
           </p>
 
           <p className="text-lg text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed">
-            One of the "Five Families" that dominated organized crime activities in New York City.
-            Tradition, loyalty, and honor above all.
+            ერთ-ერთი "ხუთი ოჯახი", რომელიც დომინირებდა ორგანიზებულ დანაშაულებრივ საქმიანობაში ნიუ-იორკში. ტრადიცია, ერთგულება და პატივი უპირველეს ყოვლისა.
           </p>
 
           <div className="h-px w-64 mx-auto bg-gradient-to-r from-transparent via-amber-600 to-transparent mb-16"></div>
@@ -29,25 +28,25 @@ export default function LandingPage() {
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="bg-black/40 backdrop-blur-sm border border-amber-600/20 rounded-lg p-8 hover:border-amber-600/40 transition-all">
               <Shield className="w-12 h-12 text-amber-500 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-amber-500 mb-3">Honor</h3>
+              <h3 className="text-xl font-semibold text-amber-500 mb-3">პატივი</h3>
               <p className="text-gray-400 leading-relaxed">
-                We uphold the ancient traditions and codes that have guided our family for generations.
+                ჩვენ ვიცავთ უძველეს ტრადიციებსა და კოდებს, რომლებიც ჩვენს ოჯახს თაობების განმავლობაში ხელმძღვანელობდა.
               </p>
             </div>
 
             <div className="bg-black/40 backdrop-blur-sm border border-amber-600/20 rounded-lg p-8 hover:border-amber-600/40 transition-all">
               <Users className="w-12 h-12 text-amber-500 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-amber-500 mb-3">Loyalty</h3>
+              <h3 className="text-xl font-semibold text-amber-500 mb-3">ერთგულება</h3>
               <p className="text-gray-400 leading-relaxed">
-                The bond between family members is sacred and unbreakable. We stand together.
+                ოჯახის წევრებს შორის კავშირი წმინდა და ურღვევია. ჩვენ ერთად ვდგავართ.
               </p>
             </div>
 
             <div className="bg-black/40 backdrop-blur-sm border border-amber-600/20 rounded-lg p-8 hover:border-amber-600/40 transition-all">
               <Crown className="w-12 h-12 text-amber-500 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-amber-500 mb-3">Respect</h3>
+              <h3 className="text-xl font-semibold text-amber-500 mb-3">პატივისცემა</h3>
               <p className="text-gray-400 leading-relaxed">
-                Respect is earned through actions and maintained through integrity.
+                პატივისცემა მიიღება ქმედებებით და შენარჩუნებულია მთლიანობის გზით.
               </p>
             </div>
           </div>
