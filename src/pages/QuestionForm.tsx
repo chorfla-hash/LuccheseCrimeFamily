@@ -63,7 +63,7 @@ export default function QuestionForm({ cvData, onBack }: QuestionFormProps) {
       username: "Lucchese Application Bot",
       embeds: [
         {
-          title: '📋 New Application - Lucchese Crime Family',
+          title: '📋 ახალი სივი - Lucchese Crime Family',
           color: 0xF59E0B, // Amber/Gold color
           fields: [
             {
