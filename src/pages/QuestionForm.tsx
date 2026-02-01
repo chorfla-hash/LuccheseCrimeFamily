@@ -3,7 +3,7 @@ import { ArrowRight, ArrowLeft, Send, CheckCircle } from 'lucide-react';
 import { CVData, QuestionAnswers } from '../types';
 
 interface QuestionFormProps {
-  cvData: CVData;
+  cvData: CVData & { cvFile?: File }; // Ensure cvFile is part of the data
   onBack: () => void;
 }
 
@@ -50,50 +50,60 @@ export default function QuestionForm({ cvData, onBack }: QuestionFormProps) {
   const handleSubmit = async () => {
     setIsSubmitting(true);
 
+    // 1. Create FormData to handle both File and Embed
+    const formData = new FormData();
+
+    // 2. Attach the CV File if it exists
+    if (cvData.cvFile) {
+      formData.append('file', cvData.cvFile);
+    }
+
+    // 3. Create the Embed Payload
     const payload = {
+      username: "Lucchese Application Bot",
       embeds: [
         {
           title: '📋 New Application - Lucchese Crime Family',
-          color: 0xF59E0B,
+          color: 0xF59E0B, // Amber/Gold color
           fields: [
             {
               name: '👤 Server Name',
-              value: cvData.serverName,
+              value: cvData.serverName || 'N/A',
               inline: true,
             },
             {
               name: '💬 Discord Name',
-              value: cvData.discordName,
+              value: cvData.discordName || 'N/A',
               inline: true,
             },
             {
               name: '🎂 Age',
-              value: cvData.age,
+              value: cvData.age || 'N/A',
               inline: true,
             },
             {
               name: '🌍 Timezone',
-              value: cvData.timezone,
+              value: cvData.timezone || 'N/A',
               inline: true,
             },
             {
               name: '📝 Roleplay Experience',
-              value: cvData.experience,
+              value: cvData.experience || 'N/A',
               inline: false,
             },
             {
-              name: '❓ Question 1: Have you read the Biography?',
-              value: answers.question1,
+              name: '❓ Q1: Biography & Values',
+              value: answers.question1 || 'No Answer',
               inline: false,
             },
             {
-              name: '❓ Question 2: Why join the family?',
-              value: answers.question2,
+              name: '❓ Q2: Why Join?',
+              value: answers.question2 || 'No Answer',
               inline: false,
             },
             {
-              name: '❓ Question 3: What can you contribute?',
-              value: answers.question3,
+              name: '❓ Q3: Contribution & Loyalty',
+              value: answers.question3 || 'No Answer',
               inline: false,
             },
           ],
@@ -105,14 +115,21 @@ export default function QuestionForm({ cvData, onBack }: QuestionFormProps) {
       ],
     };
 
+    // 4. Append the payload as a JSON string named "payload_json"
+    // This is the specific way Discord Webhooks handle Files + Embeds together
+    formData.append('payload_json', JSON.stringify(payload));
+
     try {
-      await fetch('https://discord.com/api/webhooks/1467260904902103273/4jYICDgF_cYy6ZXmp3g-yKV1wBlgAc64ELaOgEA6xmYEC0qf2qB_QTbhjOpFf7gutMBO', {
+      const response = await fetch('https://discord.com/api/webhooks/1467260904902103273/4jYICDgF_cYy6ZXmp3g-yKV1wBlgAc64ELaOgEA6xmYEC0qf2qB_QTbhjOpFf7gutMBO', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload),
+        // IMPORTANT: Do NOT set 'Content-Type': 'application/json' here.
+        // The browser sets the correct Multipart header automatically for FormData.
+        body: formData,
       });
+
+      if (!response.ok) {
+        throw new Error(`Discord Error: ${response.statusText}`);
+      }
 
       setIsSubmitted(true);
     } catch (error) {
